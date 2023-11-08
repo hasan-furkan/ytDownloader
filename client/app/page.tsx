@@ -1,8 +1,8 @@
 "use client"
-import { useState, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import axios from "axios";
 
-const Home: React.FC = () => {
+const Home = () => {
   const [input, setInput] = useState('');
   const [message, setMessage] = useState("")
 
@@ -10,7 +10,8 @@ const Home: React.FC = () => {
     event.preventDefault();
 
     const response = await axios.post("http://localhost:8000/api", input)
-    setMessage(response.data.detail)
+    console.log(response.data)
+    // setMessage(response.data)
   };
 
   return (

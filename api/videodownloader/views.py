@@ -8,13 +8,9 @@ from rest_framework import status
 def download(request):
     from pytube import YouTube
 
-
-
-
     message = request.body.decode('utf-8')
     yt = YouTube(message)
-    yt.title = "my title"
     ys = yt.streams.get_highest_resolution()
     ys.download()
     # Gönderilen mesajı JSON olarak döndür
-    return JsonResponse({'detail': f"{yt.title}isimli video indiriliyor"}, status=200)
+    return Response({'detail': f"video indiriliyor"}, status=status.HTTP_201_CREATED)
